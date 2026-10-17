@@ -1,10 +1,10 @@
 # Claude Desktop installer for Arch-based Linux (SteamOS, Steam Frame)
 
-A single shell script that installs Anthropic's official Claude Desktop Linux beta on systems that can't use `apt`, such as SteamOS on the Steam Frame, Arch, and Manjaro.
+A single shell script that installs Anthropic's official Claude Desktop Linux beta on systems that can't use `apt`, such as SteamOS on the Steam Frame and Arch.
 
 Anthropic ships the app as a `.deb` for Debian and Ubuntu. This script downloads that `.deb`, unpacks it into your home folder, and sets up a launcher, a menu entry, and the `claude://` link handler that browser sign-in needs. It needs no root access and doesn't touch the system partition, so it works on SteamOS's read-only root.
 
-> **Unofficial.** Anthropic only supports Debian and Ubuntu for this beta. The steps were verified by hand on a Steam Frame (SteamOS, arm64), where every library the app needs was already present.
+> **Unofficial.** Anthropic only supports Debian and Ubuntu for this beta. The script has been tested on a Steam Frame (SteamOS, arm64) and works well there. On that machine, every library the app needs was already present.
 
 ## Quick start
 
@@ -101,6 +101,5 @@ The launcher reads `~/.config/claude-desktop-linux/config`, a small file in shel
 - **`--no-sandbox` is on by default.** Chromium's sandbox helper must be setuid root, which isn't possible when running from a home folder. Running without the sandbox weakens the browser's process isolation. Remove the flag from the settings file if you want to try without it.
 - **The checksum is not a signature check.** The index and the package are both fetched over HTTPS from Anthropic, and the SHA-256 guards against a corrupted or mismatched download. The script doesn't verify Anthropic's GPG signature on the repository.
 - **No automatic updates.** Re-run the script to update.
-- **Tested on arm64 only.** The `amd64` package is selected automatically on x86_64 machines, but that path hasn't been verified.
-- **Cowork is untested.** The app's Cowork feature needs QEMU and KVM, which this script doesn't set up.
+- **Tested on arm64 only.** The script has been used repeatedly on a Steam Frame (SteamOS, arm64). The `amd64` package is selected automatically on x86_64 machines, but that path hasn't been verified.
 - **Uninstall leaves your data.** It removes everything listed above but not the app's own data in `~/.config/Claude` or any sign-in saved in your desktop keyring. Delete those yourself for a completely clean slate.

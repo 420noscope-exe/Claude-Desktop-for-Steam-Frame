@@ -3,7 +3,7 @@
 # install-claude-desktop.sh
 #
 # Installs Anthropic's official Claude Desktop (Linux beta) on distributions
-# that can't use apt: SteamOS on the Steam Frame, Arch, Manjaro, and similar.
+# that can't use apt: SteamOS on the Steam Frame, Arch, and similar.
 #
 # How it works: Anthropic publishes the app as a .deb. This script downloads
 # the newest .deb for your CPU (arm64 or amd64) straight from Anthropic's
